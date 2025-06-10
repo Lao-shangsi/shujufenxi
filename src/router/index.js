@@ -15,18 +15,18 @@ const routes = [
     name: 'main',
     children: [
       {
-        path: 'dataAnalysis',
-        meta: { id: '/dataAnalysis', name: '数据大屏', icon: 'Platform', describe: '用于展示当前系统中的统计数据、统计报表及重要实时数据' },
+        path: '/dataAnalysis',
+        meta: { id: 1, name: '数据大屏', icon: 'Minus', describe: '用于展示当前系统中的统计数据、统计报表及重要实时数据' },
         component: DataAnalysis
       },
       {
-        path: 'dataList',
-        meta: { id: '/dataList', name: '数据列表', icon: 'Platform', describe: '用于展示当前系统中的统计数据、统计报表及重要实时数据' },
+        path: '/dataList',
+        meta: { id: 2, name: '数据列表', icon: 'Platform', describe: '用于展示当前系统中的统计数据、统计报表及重要实时数据' },
         component: DataList
       },
       {
-        path: 'userManagement',
-        meta: { id: '/userManagement', name: '用户管理', icon: 'Platform', describe: '用于展示当前系统中的统计数据、统计报表及重要实时数据' },
+        path: '/userManagement',
+        meta: { id: 3, name: '用户管理', icon: 'Platform', describe: '用于展示当前系统中的统计数据、统计报表及重要实时数据' },
         component: UserManagement
       },
     ]

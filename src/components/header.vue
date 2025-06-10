@@ -6,24 +6,26 @@
       </el-col>
       <el-col :span="18">
         <el-menu
-          :default-active="activeIndex"
+          :default-active="$route.path"
+          router
           mode="horizontal"
           @select="handleSelect"
         >
           <el-menu-item
             v-for="item in menuData"
-            :key="item.meta.id || item.path"
-            :index="item.meta.id || item.path"
+            :key="item.path"
+            :index="item.path"
           >
+            <component :is="item.meta.icon" />
             {{ item.meta.name }}
           </el-menu-item>
         </el-menu>
       </el-col>
-      <el-col :span="3">
+      <!-- <el-col :span="3">
         <div class="btn">
           <el-button type="primary">登录</el-button>
         </div>
-      </el-col>
+      </el-col> -->
     </el-row>
   </div>
 </template>
@@ -33,7 +35,7 @@ import { reactive, ref, onMounted } from "vue";
 
 const router = useRouter();
 const menuData = reactive(router.options.routes[0].children);
-const activeIndex = ref("1");
+const activeIndex = ref("");
 const handleSelect = (key) => {
   // key 是被选中菜单项的 index
   router.push({ path: key });
@@ -42,12 +44,11 @@ const handleSelect = (key) => {
 // 初始化和监听路由变化
 onMounted(() => {
   // 初始化当前路由对应的菜单项
-  activeIndex.value =
-    router.currentRoute.value.meta.id || router.currentRoute.value.path;
+  activeIndex.value = router.currentRoute.value.path;
 
   // 监听路由变化，更新菜单项选中状态
   router.afterEach((to) => {
-    activeIndex.value = to.meta.id || to.path;
+    activeIndex.value = to.path;
   });
 });
 </script>
